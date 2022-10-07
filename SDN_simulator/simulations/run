@@ -1,0 +1,4 @@
+#!/bin/sh
+cd `dirname $0`
+../src/SDN_simulator -n .:../src $*
+# for shared lib, use: opp_run -l ../src/sdn_simulator -n .:../src $*
