@@ -1,3 +1,7 @@
+[General]
+last-configname=GEANT
+last-runnumber=0
+
 [RunModeProfiles]
 fast-max-animation-speed=nan
 fast-max-playback-speed=1e+06
@@ -8,4 +12,4 @@ run-max-animation-speed=nan
 run-max-playback-speed=100
 run-min-animation-speed=nan
 run-min-playback-speed=0.01
-run-playback-speed=1
+run-playback-speed=0.029512092266663854

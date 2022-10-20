@@ -3,6 +3,7 @@
 	<name>SDN_simulator</name>
 	<comment></comment>
 	<projects>
+		<project>inet4.4</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

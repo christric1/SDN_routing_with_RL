@@ -14,251 +14,94 @@
 // 
 
 package sdn_simulator.simulations;
-import sdn_simulator.Server;
+
+import inet.node.ethernet.EthernetSwitch;
+import inet.node.ethernet.Eth1550K;
+import inet.node.ethernet.Eth25M;
+import inet.node.ethernet.Eth100M;
 
 //
 // TODO auto-generated type
 //
 network GEANT
 {
-    parameters:
-        int numNodes = 23;
-        int numTx = 23;
-
-        @display("bgb=1585.36,919.03");
-    types:
-        channel Channel_100MB extends ned.DatarateChannel
-        {
-            delay = 0ms;
-            datarate = 100 Mbps;
-        }
-
-        channel Channel_25MB extends ned.DatarateChannel
-        {
-            delay = 0ms;
-            datarate = 25 Mbps;
-        }
-
-        channel Channel_1550KB extends ned.DatarateChannel
-        {
-            delay = 0ms;
-            datarate = 1.55 Mbps;
-        }
-
+    @display("bgb=2311.9949,1410.2374");
     submodules:
-        node1: Server {
-            id = 0;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[3];
-        }
-        node2: Server {
-            id = 1;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[6];
-        }
-        node3: Server {
-            id = 2;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[5];
-        }
-        node4: Server {
-            id = 3;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-        node5: Server {
-            id = 4;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-        node6: Server {
-            id = 5;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-        node7: Server {
-            id = 6;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[6];
-        }
-        node8: Server {
-            id = 7;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-        node9: Server {
-            id = 8;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[3];
-        }
-        node10: Server {
-            id = 9;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[5];
-        }
-        node11: Server {
-            id = 10;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-        node12: Server {
-            id = 11;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[3];
-        }
-        node13: Server {
-            id = 12;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[4];
-        }
-        node14: Server {
-            id = 13;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-        node15: Server {
-            id = 14;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-        node16: Server {
-            id = 15;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[5];
-        }
-        node17: Server {
-            id = 16;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[5];
-        }
-        node18: Server {
-            id = 17;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-        node19: Server {
-            id = 18;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[3];
-        }
-        node20: Server {
-            id = 19;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[3];
-        }
-        node21: Server {
-            id = 20;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[3];
-        }
-        node22: Server {
-            id = 21;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-        node23: Server {
-            id = 22;
-            numTx = parent.numTx;
-            numNodes = parent.numNodes;
-            gates:
-                port[2];
-        }
-
+        node1: EthernetSwitch;
+        node2: EthernetSwitch;
+        node3: EthernetSwitch;
+        node4: EthernetSwitch;
+        node5: EthernetSwitch;
+        node6: EthernetSwitch;
+        node7: EthernetSwitch;
+        node8: EthernetSwitch;
+        node9: EthernetSwitch;
+        node10: EthernetSwitch;
+        node11: EthernetSwitch;
+        node12: EthernetSwitch;
+        node13: EthernetSwitch;
+        node14: EthernetSwitch;
+        node15: EthernetSwitch;
+        node16: EthernetSwitch;
+        node17: EthernetSwitch;
+        node18: EthernetSwitch;
+        node19: EthernetSwitch;
+        node20: EthernetSwitch;
+        node21: EthernetSwitch;
+        node22: EthernetSwitch;
+        node23: EthernetSwitch;
+        
     connections:
-        node1.port[0] <--> Channel_100MB <--> node3.port[0];
-        node1.port[1] <--> Channel_100MB <--> node7.port[0];
-        node1.port[2] <--> Channel_100MB <--> node16.port[0];
+        node1.ethg++ <--> Eth100M <--> node3.ethg++;
+        node1.ethg++ <--> Eth100M <--> node7.ethg++;
+        node1.ethg++ <--> Eth100M <--> node16.ethg++;
 
-        node2.port[0] <--> Channel_100MB <--> node4.port[0];
-        node2.port[1] <--> Channel_100MB <--> node7.port[1];
-        node2.port[2] <--> Channel_100MB <--> node12.port[0];
-        node2.port[3] <--> Channel_100MB <--> node13.port[0];
-        node2.port[4] <--> Channel_25MB <--> node18.port[0];
-        node2.port[5] <--> Channel_25MB <--> node23.port[0];
+        node2.ethg++ <--> Eth100M <--> node4.ethg++;
+        node2.ethg++ <--> Eth100M <--> node7.ethg++;
+        node2.ethg++ <--> Eth100M <--> node12.ethg++;
+        node2.ethg++ <--> Eth100M <--> node13.ethg++;
+        node2.ethg++ <--> Eth25M <--> node18.ethg++;
+        node2.ethg++ <--> Eth25M <--> node23.ethg++;
 
-        node3.port[1] <--> Channel_100MB <--> node10.port[0];
-        node3.port[2] <--> Channel_25MB <--> node11.port[0];
-        node3.port[3] <--> Channel_1550KB <--> node14.port[0];
-        node3.port[4] <--> Channel_100MB <--> node21.port[0];
+        node3.ethg++ <--> Eth100M <--> node10.ethg++;
+        node3.ethg++ <--> Eth25M <--> node11.ethg++;
+        node3.ethg++ <--> Eth1550K <--> node14.ethg++;
+        node3.ethg++ <--> Eth100M <--> node21.ethg++;
 
-        node4.port[1] <--> Channel_100MB <--> node16.port[1];
+        node4.ethg++ <--> Eth100M <--> node16.ethg++;
 
-        node5.port[0] <--> Channel_25MB <--> node8.port[0];
-        node5.port[1] <--> Channel_25MB <--> node16.port[2];
+        node5.ethg++ <--> Eth25M <--> node8.ethg++;
+        node5.ethg++ <--> Eth25M <--> node16.ethg++;
 
-        node6.port[0] <--> Channel_1550KB <--> node7.port[2];
-        node6.port[1] <--> Channel_1550KB <--> node19.port[0];
+        node6.ethg++ <--> Eth1550K <--> node7.ethg++;
+        node6.ethg++ <--> Eth1550K <--> node19.ethg++;
 
-        node7.port[3] <--> Channel_100MB <--> node17.port[0];
-        node7.port[4] <--> Channel_25MB <--> node19.port[1];
-        node7.port[5] <--> Channel_100MB <--> node21.port[1];
+        node7.ethg++ <--> Eth100M <--> node17.ethg++;
+        node7.ethg++ <--> Eth25M <--> node19.ethg++;
+        node7.ethg++ <--> Eth100M <--> node21.ethg++;
 
-        node8.port[1] <--> Channel_25MB <--> node9.port[0];
+        node8.ethg++ <--> Eth25M <--> node9.ethg++;
 
-        node9.port[1] <--> Channel_25MB <--> node15.port[0];
-        node9.port[2] <--> Channel_100MB <--> node16.port[3];
+        node9.ethg++ <--> Eth25M <--> node15.ethg++;
+        node9.ethg++ <--> Eth100M <--> node16.ethg++;
 
-        node10.port[1] <--> Channel_25MB <--> node11.port[1];
-        node10.port[2] <--> Channel_100MB <--> node12.port[1];
-        node10.port[3] <--> Channel_100MB <--> node16.port[4];
-        node10.port[4] <--> Channel_100MB <--> node17.port[1];
+        node10.ethg++ <--> Eth25M <--> node11.ethg++;
+        node10.ethg++ <--> Eth100M <--> node12.ethg++;
+        node10.ethg++ <--> Eth100M <--> node16.ethg++;
+        node10.ethg++ <--> Eth100M <--> node17.ethg++;
 
-        node12.port[2] <--> Channel_100MB <--> node22.port[0];
+        node12.ethg++ <--> Eth100M <--> node22.ethg++;
 
-        node13.port[1] <--> Channel_1550KB <--> node14.port[1];
-        node13.port[2] <--> Channel_100MB <--> node17.port[2];
-        node13.port[3] <--> Channel_25MB <--> node19.port[2];
+        node13.ethg++ <--> Eth1550K <--> node14.ethg++;
+        node13.ethg++ <--> Eth100M <--> node17.ethg++;
+        node13.ethg++ <--> Eth25M <--> node19.ethg++;
 
-        node15.port[1] <--> Channel_25MB <--> node20.port[0];
+        node15.ethg++ <--> Eth25M <--> node20.ethg++;
 
-        node17.port[3] <--> Channel_100MB <--> node20.port[1];
-        node17.port[4] <--> Channel_25MB <--> node23.port[1];
+        node17.ethg++ <--> Eth100M <--> node20.ethg++;
+        node17.ethg++ <--> Eth25M <--> node23.ethg++;
 
-        node18.port[1] <--> Channel_25MB <--> node21.port[2];
+        node18.ethg++ <--> Eth25M <--> node21.ethg++;
 
-        node20.port[2] <--> Channel_25MB <--> node22.port[1];
+        node20.ethg++ <--> Eth25M <--> node22.ethg++;
 }
