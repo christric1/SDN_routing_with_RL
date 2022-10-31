@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>inet4.4</project>
+		<project>openflow6</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
