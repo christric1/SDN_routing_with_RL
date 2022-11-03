@@ -1,0 +1,3 @@
+package scenarios;
+
+@license(LGPL);
