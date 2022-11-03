@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for SDN_simulator
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep
+#  opp_makemake -f --deep -KINET4_4_PROJ=/home/christee/Documents/omnetpp-6.0.1/samples/inet4.4 -DINET_IMPORT -L$$\(INET4_4_PROJ\)/src -lINET$$\(D\)
 #
 
 # Name of target to be created (-o option)
@@ -25,7 +25,7 @@ INCLUDE_PATH =
 EXTRA_OBJS =
 
 # Additional libraries (-L, -l options)
-LIBS =
+LIBS = $(LDFLAG_LIBPATH)$(INET4_4_PROJ)/src  -lINET$(D)
 
 # Output directory
 PROJECT_OUTPUT_DIR = ../out
@@ -52,6 +52,9 @@ MSGFILES = \
 # SM files
 SMFILES =
 
+# Other makefile variables (-K)
+INET4_4_PROJ=/home/christee/Documents/omnetpp-6.0.1/samples/inet4.4
+
 #------------------------------------------------------------------------------
 
 # Pull in OMNeT++ configuration (Makefile.inc)
@@ -70,8 +73,11 @@ include $(CONFIGFILE)
 
 # Simulation kernel and user interface libraries
 OMNETPP_LIBS = $(OPPMAIN_LIB) $(USERIF_LIBS) $(KERNEL_LIBS) $(SYS_LIBS)
+ifneq ($(PLATFORM),win32)
+LIBS += -Wl,-rpath,$(abspath $(INET4_4_PROJ)/src)
+endif
 
-COPTS = $(CFLAGS) $(IMPORT_DEFINES)  $(INCLUDE_PATH) -I$(OMNETPP_INCL_DIR)
+COPTS = $(CFLAGS) $(IMPORT_DEFINES) -DINET_IMPORT $(INCLUDE_PATH) -I$(OMNETPP_INCL_DIR)
 MSGCOPTS = $(INCLUDE_PATH)
 SMCOPTS =
 
